@@ -4,11 +4,7 @@
 #include <QMainWindow>
 #include <QSerialPort>
 #include <QSerialPortInfo>
-#include <QColorDialog>
-#include <QColor>
 #include <QDebug>
-#include <QThread>
-#include "dialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -22,19 +18,19 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    QColorDialog *showColor;
     QSerialPort *serialPort;
-    bool isConnected = false;
 
-private:
-    Ui::MainWindow *ui;
+    bool ON = false;
 
 public slots:
     void connectToSerial();
-    void mySerialReader();
+    void startReading();
 
 signals:
     void startReading(bool ok);
+
+private:
+    Ui::MainWindow *ui;
 };
 
 #endif // MAINWINDOW_H
